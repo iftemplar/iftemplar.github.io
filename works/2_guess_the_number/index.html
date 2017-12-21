@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+  <title>Guess the number</title>
+  <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+<body>
+  <div class="theScript">
+    <h1>Guess the number</h1>
+    <h2>Open the console</h2>
+    <div class="theScript--wrap">
+      <div class="theScript--task">
+        <p>Create variable for random number (from 0 to 100) and set it using Math.random()
+        tip: Math.random() returns number from 0 to 1, so you have to
+        multiply it by 100 and then convert result to integer.
+        </p>
+        <p>Ask user (with prompt) to guess the number
+        if user clicks "Cancel" - do not ask to enter the number more
+        If entered number doesn’t equal to our variable, alert “Our number is higher, try again” or “Our number is lower, try again”. Then ask user to enter number again.
+        </p>
+
+        <p>If user guessed the number, show message “You are right, the number is [number]”.
+        </p>
+      </div>
+      <code class="theScript--code">
+        <pre>
+          function guessTheNumber(){
+            // Math.random() генерує число від 0 до 1
+            // множення на 100 збільшує діапазон від 0 до 100
+            // Math.round відкидає знаки після коми
+            var randomNum = Math.round(Math.random() * 100);
+            console.log (randomNum); // cheat
+
+            while(randomNum !== userNum){
+              var userNum = prompt('Try to guess the number 0-100');
+              if (userNum === null){
+                console.log('GoodBye');
+                return;
+              }
+
+              if(userNum > randomNum ) {
+                console.log('Our number is lower, try again ');
+              }
+              else if(userNum < randomNum){
+                console.log('Our number is higher, try again');
+              }
+              else{
+                console.warn('You are right, the number is ' + randomNum);
+                return;
+              }
+            }
+          }
+        </pre>
+      </code>
+      <a href="#" class="launchButton" onclick="guessTheNumber();return false;">
+        Launch the script
+      </a>
+    </div>
+  </div>
+  
+  <script>
+    function guessTheNumber(){
+      // Math.random() генерує число від 0 до 1
+      // множення на 100 збільшує діапазон від 0 до 100
+      // Math.round відкидає знаки після коми
+      var randomNum = Math.round(Math.random() * 100);
+      console.log (randomNum); // cheat
+
+      while(randomNum !== userNum){
+        var userNum = prompt('Try to guess the number 0-100');
+        if (userNum === null){
+          console.log('GoodBye');
+          return;
+        }
+
+        if(userNum > randomNum ) {
+          console.log('Our number is lower, try again ');
+        }
+        else if(userNum < randomNum){
+          console.log('Our number is higher, try again');
+        }
+        else{
+          console.warn('You are right, the number is ' + randomNum);
+          return;
+        }
+      }
+    }
+</script>
+</body>
+</html>

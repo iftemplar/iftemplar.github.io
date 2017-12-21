@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+  <title>Guess the number win money</title>
+  <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+<body>
+  <div class="theScript">
+    <h1>Guess the number win money</h1>
+    <h2>Open the console</h2>
+    <div class="theScript--wrap">
+      <div class="theScript--task">
+        <p>Write the game “Guess the number”
+        The app should ask “Do you want to play the game?”
+        you can use confirm() for that</p>
+
+        <p>if user clicks on “cancel” - will show in console “Today you will not win the jackpot, but you could”
+        if user clicks on “ок” - we'll start the game
+        by random will choose a number between 0 and 5
+        and ask user to enter the number</p>
+
+        <p>user has 3 attempts to guess the number
+        if he won from the first attempt - he will win 10$, from second attempt - 5$, from third attempt - 2$
+        if he doesn't guess the number, will show in console “Your win - 0$”</p>
+
+        <p>and ask if user wants to play one more time
+        if user guest the right number, we will ask him if he wants to play the game again
+        use can use the confirm() again for that
+        if user decided to not play the game anymore, write on console “Thanks for the game! Your win is x$”</p>
+
+        <p>if user decided to play one more time, then increase the gap by half, and prize - multiplied by 3
+        for instance, if user guest from the first attempt - he'll win 30$, from second - 15$, from third - 6$
+        the win sum should be added to the previous one
+        the game is repeated until time the user lose or until he wants to compete</p>
+
+        <p>++ I've changed consoles to alerts to make the usage easier</p>
+      </div>
+      <code class="theScript--code">
+        <pre>
+    function guessTheNumberMoney(){
+      //ініціалізація змінних, min-max це діапазон в якому генеруватимуться числа
+      var min = 0;
+      var max = 5;
+      // winVariants містить суми виграшів залежно від спроби
+      var winVariants = {
+        1: 10,
+        2: 5,
+        3: 2
+      }
+      // тут лежать виграні гроші
+      var moneyBank = 0;
+      // Гра продовжується поки flag є true.
+          Якщо гравець перед одним з турів вирішить не продовжувати гру
+          flag стане false і гра припиниться
+      var flag = true;
+
+      // запитати в користувача чи почати гру
+      if(confirm('Start?')){
+        // якщо гравець вгадав і обрав "продовжити" програма переносить
+          його на цю мітку виходячи з двох циклів
+        newTour:
+          do{
+            // тут генерується випадкове число на тур
+            var jsNum = getRandomNum(min,max);
+            // цикл з трьох спроб вгадати
+            for(var i = 1; i <= 3; i++){
+              // юзера просять взадати число
+              var userNum = getUserNum();
+              // перевірка чи вгадано
+              if(jsNum === userNum){
+                // якщо так - банк збільшуєтлься на розмір ставки
+                moneyBank += winVariants[i];
+                alert('Yes, that is the number !');
+                // запитуємо чи юзер хоче продовжити
+                if(confirm('Continue?')){
+                  // якщо так - збільшуємо діапазон випадкових чисел
+                  max = Math.round(max + (max/2));
+                  // і кількість баксів за вгадування
+                  for (j in winVariants) {
+                    winVariants[j]=winVariants[j]*3;
+                  }
+                  // перехід на містку newTour
+                  continue newTour;
+                }
+                // якщо юзер вирішив зупинитись - показуємо скільки він виграв
+                else {
+                  flag = false;
+                  alert('You ended the game. Money in your bank: $' + moneyBank);
+                  break;
+                }
+              }
+              // якщо число не було вгадано
+              else{
+                alert('No, it is not ' + userNum);
+                // чіт в консоль, для тесту
+                console.log('No, the number was ' + jsNum + " and your variant was " + userNum);
+                if(i==3){
+                  alert('That was your last try. You lost');
+                  return;
+                }
+                // якщо у юзера ще є спроби - продовжимо
+                else{
+                  alert('Another Try !')
+                  continue;
+                }
+              }
+            }
+          }
+          while(flag)
+      }
+      else{
+        alert('Today you will not win the jackpot, but you could');
+      }
+      // Generates a random number in the range set on the call
+      function getRandomNum(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+      }
+
+      // Ask user to guess a number
+      function getUserNum(){
+        var userNumConverted = +(prompt('Please guess a number
+        from 0 to 5 including \nTries left: ' + (4 - i)));
+        return userNumConverted;
+      }
+    }
+        </pre>
+      </code>
+      <a href="#" class="launchButton" onclick="guessTheNumberMoney();return false;">
+        Launch the script
+      </a>
+    </div>
+  </div>
+  
+  <script>
+    function guessTheNumberMoney(){
+      //ініціалізація змінних, min-max це діапазон в якому генеруватимуться числа
+      var min = 0;
+      var max = 5;
+      // winVariants містить суми виграшів залежно від спроби
+      var winVariants = {
+        1: 10,
+        2: 5,
+        3: 2
+      }
+      // тут лежать виграні гроші
+      var moneyBank = 0;
+      // Гра продовжується поки flag є true. Якщо гравець перед одним з турів вирішить не продовжувати гру flag стане false і гра припиниться
+      var flag = true;
+
+      // запитати в користувача чи почати гру
+      if(confirm('Start?')){
+        // якщо гравець вгадав і обрав "продовжити" програма переносить його на цю мітку виходячи з двох циклів
+        newTour:
+          do{
+            // тут генерується випадкове число на тур
+            var jsNum = getRandomNum(min,max);
+            // цикл з трьох спроб вгадати
+            for(var i = 1; i <= 3; i++){
+              // юзера просять взадати число
+              var userNum = getUserNum();
+              // перевірка чи вгадано
+              if(jsNum === userNum){
+                // якщо так - банк збільшуєтлься на розмір ставки
+                moneyBank += winVariants[i];
+                alert('Yes, that is the number !');
+                // запитуємо чи юзер хоче продовжити
+                if(confirm('Continue?')){
+                  // якщо так - збільшуємо діапазон випадкових чисел
+                  max = Math.round(max + (max/2));
+                  // і кількість баксів за вгадування
+                  for (j in winVariants) {
+                    winVariants[j]=winVariants[j]*3;
+                  }
+                  // перехід на містку newTour
+                  continue newTour;
+                }
+                // якщо юзер вирішив зупинитись - показуємо скільки він виграв
+                else {
+                  flag = false;
+                  alert('You ended the game. Money in your bank: $' + moneyBank);
+                  break;
+                }
+              }
+              // якщо число не було вгадано
+              else{
+                alert('No, it is not ' + userNum);
+                // чіт в консоль, для тесту
+                console.log('No, the number was ' + jsNum + " and your variant was " + userNum);
+                if(i==3){
+                  alert('That was your last try. You lost');
+                  return;
+                }
+                // якщо у юзера ще є спроби - продовжимо
+                else{
+                  alert('Another Try !')
+                  continue;
+                }
+              }
+            }
+          }
+          while(flag)
+      }
+      else{
+        alert('Today you will not win the jackpot, but you could');
+      }
+      // Generates a random number in the range set on the call
+      function getRandomNum(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+      }
+
+      // Ask user to guess a number
+      function getUserNum(){
+        var userNumConverted = +(prompt('Please guess a number from 0 to 5 including \nTries left: ' + (4 - i)));
+        return userNumConverted;
+      }
+    }
+</script>
+</body>
+</html>

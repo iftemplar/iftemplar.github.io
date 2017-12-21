@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Rock Scissors Paper game</title>
+  <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+<body>
+  <div class="theScript">
+    <h1>Rock Scissors Paper game</h1>
+    <h2>Open the console to see the progress</h2>
+    <div class="theScript--wrap">
+      <div class="theScript--task">
+        The task was to create a simple game which shows the process in the console.
+        Each round JavaScript generates a number which is compared with users.
+      </div>
+      <code class="theScript--code">
+        <pre>
+          var function rockScissorsPaper(){
+          init();
+          function init() {
+            var wantsPlay = confirm('Start the game ?');
+            while(wantsPlay){
+              startGame();
+            }
+          }
+          function startGame(){
+            var jsChoice;
+            var userChoice;
+            var winSituations = {
+              Rock: 'Scissors',
+              Scissors: 'Paper',
+              Paper: 'Rock'
+            }
+            jsChoice = getJavaScriptChoice();
+            userChoice = getUserChoice();
+            if (userChoice === jsChoice) {
+              alert('Draw!');
+              // winSituations[userChoice] це об'єкт.
+              // Якщо користувач обрав Rock - [userChoice] це індекс об'єкту.
+              // Тому winSituations[userChoice] поверне winSituations[userChoice]: Scissors
+              // Якщо JS теж згенерував Scissors в змінну jsChoice - користувач переміг
+            } else if(winSituations[userChoice] === jsChoice ){
+              alert('You won!');
+            } else {
+              alert('You bloody lost!')
+            }
+            console.log('Javascript: ' + jsChoice);
+            console.log('You: ' + userChoice);
+          }
+          // Генерує випадковий варіант JavaScript-а
+          function getJavaScriptChoice(){
+            var jsActualChoice;
+            var jsNumChoice = Math.random() * 100;
+            if(jsNumChoice < 33){
+              jsActualChoice = 'Rock';
+            } else if (jsNumChoice > 66){
+              jsActualChoice = 'Paper';
+            }
+            else{
+              jsActualChoice = 'Scissors';
+            }
+            return jsActualChoice;
+          }
+          // дає користувачу вибрати варіант, повертає userActualChoice яке вище записується в userChoice
+          function getUserChoice() {
+            while(!userActualChoice) {
+              var userNumChoice = prompt('Your choice ? \nRock: 1\nScissors: 2\nPaper: 3')
+              if (userNumChoice === null) {
+                alert('Good bye');
+                throw console.warn('You stopped the game');
+              }
+              var userActualChoice;
+              switch (userNumChoice) {
+                case '1':
+                  userActualChoice = 'Rock';
+                  break;
+                case '2':
+                  userActualChoice = 'Scissors';
+                  break;
+                case '3':
+                  userActualChoice = 'Paper';
+                  break;
+                default:
+                  alert('Please choose 1 for Rock, 2 for Scissors, 3 for Paper');
+              }
+            }
+            return userActualChoice;
+          }
+        }
+        </pre>
+      </code>
+      <a href="#" class="launchButton" onclick="rockScissorsPaper();return false;">
+        Launch the script
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function rockScissorsPaper(){
+      init();
+      function init() {
+        var wantsPlay = confirm('Start the game ?');
+        while(wantsPlay){
+          startGame();
+        }
+      }
+      function startGame(){
+        var jsChoice;
+        var userChoice;
+        var winSituations = {
+          Rock: 'Scissors',
+          Scissors: 'Paper',
+          Paper: 'Rock'
+        }
+        jsChoice = getJavaScriptChoice();
+        userChoice = getUserChoice();
+        if (userChoice === jsChoice) {
+          alert('Draw!');
+          // winSituations[userChoice] це об'єкт.
+          // Якщо користувач обрав Rock - [userChoice] це індекс об'єкту.
+          // Тому winSituations[userChoice] поверне winSituations[userChoice]: Scissors
+          // Якщо JS теж згенерував Scissors в змінну jsChoice - користувач переміг
+        } else if(winSituations[userChoice] === jsChoice ){
+          alert('You won!');
+        } else {
+          alert('You bloody lost!')
+        }
+        console.log('Javascript: ' + jsChoice);
+        console.log('You: ' + userChoice);
+      }
+      // Генерує випадковий варіант JavaScript-а
+      function getJavaScriptChoice(){
+        var jsActualChoice;
+        var jsNumChoice = Math.random() * 100;
+        if(jsNumChoice < 33){
+          jsActualChoice = 'Rock';
+        } else if (jsNumChoice > 66){
+          jsActualChoice = 'Paper';
+        }
+        else{
+          jsActualChoice = 'Scissors';
+        }
+        return jsActualChoice;
+      }
+      // дає користувачу вибрати варіант, повертає userActualChoice яке вище записується в userChoice
+      function getUserChoice() {
+        while(!userActualChoice) {
+          var userNumChoice = prompt('Your choice ? \nRock: 1\nScissors: 2\nPaper: 3')
+          if (userNumChoice === null) {
+            alert('Good bye');
+            throw console.warn('You stopped the game');
+          }
+          var userActualChoice;
+          switch (userNumChoice) {
+            case '1':
+              userActualChoice = 'Rock';
+              break;
+            case '2':
+              userActualChoice = 'Scissors';
+              break;
+            case '3':
+              userActualChoice = 'Paper';
+              break;
+            default:
+              alert('Please choose 1 for Rock, 2 for Scissors, 3 for Paper');
+          }
+        }
+        return userActualChoice;
+      }
+    }
+</script>
+</body>
+</html>
