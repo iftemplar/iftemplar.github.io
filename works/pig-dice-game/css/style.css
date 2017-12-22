@@ -31,7 +31,7 @@ body {
 }
 
 .visible{
-    display: block;
+    display: block !important;
 }
 
 .wrapper {
@@ -235,7 +235,30 @@ i {
     -webkit-animation-duration: 500ms;
 }
 
+.help {
+    position: absolute;
+    right: 0;
+    top: 15px;
+}
 
+.help-rules {
+    position: absolute;
+    width: 600px;
+    background: #fff;
+    left: calc(50% - 300px);
+    top: 40px;
+    padding: 30px;
+    line-height: 1.8;
+    border: 1px solid #000;
+    display: none;
+}
 
-
+.help-rules-close{
+    margin-top: 25px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 20px;
+}
 
