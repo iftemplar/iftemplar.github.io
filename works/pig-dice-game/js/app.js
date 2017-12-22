@@ -112,8 +112,8 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 		// Check if player won the game
 		if(scores[activePlayer] >= ScoreToReach) {
 			document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
-			document.querySelector('.dice').style.display = 'none';
-			document.querySelector('.dice-2').style.display = 'none';
+			document.querySelector('.dice').classList.add('hidden');
+			document.querySelector('.dice-2').classList.add('hidden');
 			document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
 			document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
 			gamePlaying = false;
