@@ -70,7 +70,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
 						setTimeout(function(){
 							document.getElementById('score-' + activePlayer).classList.remove('blink');
 							dropPlayersScore();
-							nextPlayer();
+							nextPlayer(1000);
 						}, 1000);
 					}, 500);
 				// mark that this is the first occurence on 6 on cubes
@@ -92,7 +92,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
 		// if the dice == 1
 		// switch players
 		} else {
-			nextPlayer();
+			nextPlayer(1000);
 		} 
 	}
 });
@@ -116,14 +116,16 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 			document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
 			gamePlaying = false;
 		} else {
-			// next player
-			nextPlayer();
+			// next player with minimun delay
+			nextPlayer(100);
+
 		}
 	}
 });
 
 
-function nextPlayer() {
+function nextPlayer(theTimeout) {
+	// debugger;
 	// switch players	
 	activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
 	roundScore = 0;
@@ -154,9 +156,8 @@ function nextPlayer() {
 	}
 
 	// hide the dices
-	setTimeout(function(){
+	setTimeout(function(theTimeout){
 		for (var ii = 0; ii < listAll.length; ii++ ) {
-			//debugger;
 			listAll[ii].classList.add('hidden');
 			// if dice with one is om a table - shake it
 			if(listOnes[ii]){
@@ -165,8 +166,9 @@ function nextPlayer() {
 			// make the ROLL DICE button working again
 			document.querySelector('.btn-roll').removeAttribute('disabled');
 		}
-	}, 2000);
+	}, theTimeout);
 }
+
 
 // ///////////////
 // Start new game
