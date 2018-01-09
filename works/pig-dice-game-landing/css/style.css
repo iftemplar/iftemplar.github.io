@@ -85,7 +85,6 @@ label {
   cursor: pointer;
 }
 
-я
 h1 {
   margin: 0 auto;
   font-size: 82px;
@@ -419,11 +418,19 @@ b {
   padding-bottom: 248px;
 }
 
-.header_11 .bg {
+/*.header_11 .bg {
   position: absolute;
   left: 0;
   top: 125px;
   bottom: 0;
+}*/
+
+.header_11 .bg {
+  position: absolute;
+  left: -170px;
+  top: -5px;
+  bottom: 0;
+      width: 1400px;
 }
 
 .header_11 .inner .link {
