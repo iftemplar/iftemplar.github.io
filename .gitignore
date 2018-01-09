@@ -1,3 +1,4 @@
-# ignore folders .idea, node_modules
+# ignore folders .idea, node_modules, system files .DS_Store
 .idea/
 node_modules/
+.DS_Store
