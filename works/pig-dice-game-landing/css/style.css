@@ -426,11 +426,11 @@ b {
 }*/
 
 .header_11 .bg {
+  width: 1400px;
   position: absolute;
   left: -170px;
   top: -5px;
   bottom: 0;
-  width: 1400px;
 }
 
 .header_11 .inner .link {
