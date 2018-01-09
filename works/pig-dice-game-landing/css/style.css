@@ -418,6 +418,8 @@ b {
   padding-bottom: 248px;
 }
 
+/*In case you'll found the original mockup*/
+
 /*.header_11 .bg {
   position: absolute;
   left: 0;
@@ -2621,8 +2623,8 @@ b {
 
 /* Team 2 */
 .team_2 {
-  background-color: #141414;
-  /*background: #141414 url(../i/team_2_bg.jpg) 50% 50%;*/
+  /*background-color: #141414;*/
+  background: #141414 url(../i/content_5_bg.jpg) 50% 50%;
   /*background-size: cover;*/
 }
 
